@@ -5,23 +5,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.welcome.journalapp.MainActivity;
+import com.example.welcome.journalapp.R;
 import com.example.welcome.journalapp.utils.NetworkUtils;
+import com.firebase.ui.auth.AuthUI;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class SignInActivity extends Activity {
-   /* private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     private static final int RC_SIGN_IN = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
         Button retry = findViewById(R.id.retry);
+        RelativeLayout rel = findViewById(R.id.relative_layo);
 
         if (isUSerLoggedIn()){
             launchCorrespondingActivity();
@@ -30,7 +36,7 @@ public class SignInActivity extends Activity {
             if (NetworkUtils.isConnected(this)) {
                 launchFirebaseUi();
             }else{
-                setContentView(R.layout.activity_sing_in);
+                setContentView(R.layout.activity_sign_in);
             }
         }
         retry.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +81,8 @@ public class SignInActivity extends Activity {
 
     public  void launchFirebaseUi(){
         // Choose authentication providers
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
+        List<AuthUI.IdpConfig> providers;
+        providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.PhoneBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
@@ -83,8 +90,7 @@ public class SignInActivity extends Activity {
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
                 .setTosUrl("")
-                .setTheme(R.style.LoginTheme)
                 .setIsSmartLockEnabled(true)
                 .build(), RC_SIGN_IN);
-    }*/
+    }
 }
