@@ -26,9 +26,6 @@ import static com.example.welcome.journalapp.MainActivity.PREFS_CATEGORY;
 import static com.example.welcome.journalapp.MainActivity.PREF_CATEGORY_KEY;
 public class JournalListView extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     private JournalAdapter mAdapter;
     private ListView mListView;
     public static final int PRODUCT_LOADER = 0;
@@ -131,7 +128,6 @@ public class JournalListView extends Fragment implements LoaderManager.LoaderCal
 
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction();
         void onListItemCLicked(long id);
     }

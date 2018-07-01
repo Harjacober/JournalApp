@@ -92,6 +92,7 @@ public class SignInActivity extends Activity {
         startActivityForResult(AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
+                .setTheme(R.style.LoginTheme)
                 .setTosUrl("")
                 .setIsSmartLockEnabled(true)
                 .build(), RC_SIGN_IN);
