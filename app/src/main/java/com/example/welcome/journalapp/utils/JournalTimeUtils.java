@@ -230,8 +230,11 @@ public class JournalTimeUtils {
         return sdf.format(timeInMillis);
     }
     public static String getDayNum(long timeInMillis){
-        SimpleDateFormat sdf = new SimpleDateFormat("DD");
-        return sdf.format(timeInMillis);
+        Date date = new Date(timeInMillis);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int dayNum = calendar.get(Calendar.DAY_OF_MONTH);
+        return String.valueOf(dayNum);
     }
     public static String getMonth(long timeInMillis){
         SimpleDateFormat sdf = new SimpleDateFormat("MM");

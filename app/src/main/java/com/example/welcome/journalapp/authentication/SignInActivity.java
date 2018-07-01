@@ -20,6 +20,7 @@ import java.util.List;
 public class SignInActivity extends Activity {
     private FirebaseAuth mAuth;
     private static final int RC_SIGN_IN = 200;
+    private RelativeLayout rel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,8 @@ public class SignInActivity extends Activity {
         setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
         Button retry = findViewById(R.id.retry);
-        RelativeLayout rel = findViewById(R.id.relative_layo);
+        rel = findViewById(R.id.relative_layout);
+        rel.setVisibility(View.INVISIBLE);
 
         if (isUSerLoggedIn()){
             launchCorrespondingActivity();
@@ -36,7 +38,7 @@ public class SignInActivity extends Activity {
             if (NetworkUtils.isConnected(this)) {
                 launchFirebaseUi();
             }else{
-                setContentView(R.layout.activity_sign_in);
+                rel.setVisibility(View.VISIBLE);
             }
         }
         retry.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +61,8 @@ public class SignInActivity extends Activity {
             }
             if (resultCode == RESULT_CANCELED){
                 Toast.makeText(this, "login failed", Toast.LENGTH_SHORT).show();
-                launchFirebaseUi();
+                rel.setVisibility(View.VISIBLE);
+//                launchFirebaseUi();
             }
         }else{
             Toast.makeText(this, "unknown error", Toast.LENGTH_SHORT).show();

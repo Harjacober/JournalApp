@@ -11,6 +11,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -45,6 +46,7 @@ public class JournalCalendarView extends Fragment implements LoaderManager.Loade
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mUtcDateWithOutTime = null;
     }
 
     @Override
@@ -65,6 +67,7 @@ public class JournalCalendarView extends Fragment implements LoaderManager.Loade
         mListView.setAdapter(mAdapter);
         mListView.setEmptyView(view.findViewById(R.id.empty_view));
         setListViewListener();
+        listViewOnTouchListener();
         calendarView = view.findViewById(R.id.calendarView);
         getLoaderManager().initLoader(PRODUCT_LOADER,null,this);
         setCalendarViewListener();
@@ -155,6 +158,18 @@ public class JournalCalendarView extends Fragment implements LoaderManager.Loade
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 mListener.onListItemClickedInCalendarClass(id);
             }
+        });
+    }
+    public void listViewOnTouchListener(){
+        mListView.setOnTouchListener(new View.OnTouchListener() {
+            // Setting on Touch Listener for handling the touch inside ScrollView
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disallow the touch request for parent scroll on touch of child view
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+
         });
     }
 }
