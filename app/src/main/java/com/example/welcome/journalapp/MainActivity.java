@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle(Html.fromHtml("<font color=#000000>JournalApp</font>."));
         requestAllPermission();
         getSupportActionBar().setElevation(0);
         PagerTabStrip mPagerTabStrip= findViewById(R.id.pager_tab_strip);
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements
         spinner.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                ((TextView) spinner.getSelectedView()).setTextColor(Color.BLACK);
+                ((TextView) spinner.getSelectedView()).setTextColor(Color.WHITE);
             }
         });
         spinner.setOnItemSelectedListener(this);
@@ -154,8 +153,8 @@ public class MainActivity extends AppCompatActivity implements
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position){
-                case 0: return Html.fromHtml("<font color=#000000>HOME</font>.");
-                case 1: return Html.fromHtml("<font color=#000000>CALENDAR VIEW</font>.");
+                case 0: return Html.fromHtml("<font color=#ffffff><b>HOME</b></font>.");
+                case 1: return Html.fromHtml("<font color=#ffffff><b>CALENDAR VIEW</b></font>.");
                 default:return null;
             }
         }

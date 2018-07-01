@@ -11,6 +11,7 @@
     <style name="DialogTheme" parent="Theme.AppCompat.Light">
         <item name="colorAccent">#691A99</item>
     </style>
+
     <style name="LoginTheme" parent="FirebaseUI">
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
